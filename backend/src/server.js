@@ -20,10 +20,10 @@ app.use(cors({
     credentials:true
 }))
 
-app.use(earningsRoute);
-app.use(servicesRoute);
-app.use(reportRoute)
-app.use(adminRoute)
+// app.use(earningsRoute);
+// app.use(servicesRoute);
+// app.use(reportRoute)
+// app.use(adminRoute)
 
 
 app.listen(port, ()=>{
