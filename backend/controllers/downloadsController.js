@@ -3,8 +3,6 @@ const earnings = require("../mockDB/dummyEarnings")
 const PDFDocument = require('pdfkit')
 const Papa = require('papaparse')
 
-const fs = require('fs')
-
 module.exports = {
 
 downloadAsPdf : async(req,res)=>{
