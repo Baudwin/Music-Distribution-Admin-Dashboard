@@ -8,6 +8,8 @@ const adminRoute = require("../routes/admin")
 
 const cors = require('cors')
 
+const is_production = process.env.NODE_ENV === 'production' 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -15,7 +17,7 @@ require('dotenv').config()
 const port  = process.env.PORT || 4000
 
 app.use(cors({
-    origin:[ "http://localhost:3000" ],
+    origin:[ is_production ?  "https://music-distribution-admin-dashboard.vercel.app": "http://localhost:3000"],
     methods:['POST','GET','PUT','DELETE'],
     credentials:true
 }))

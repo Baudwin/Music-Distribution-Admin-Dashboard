@@ -5,13 +5,21 @@ import { FiCheckCircle, FiUmbrella } from "react-icons/fi"
 import { AiFillCheckCircle } from "react-icons/ai"
 import { BsFillCheckCircleFill } from "react-icons/bs"
 
-function Services(){
+const is_production = process.env.NODE_ENV === 'production' 
 
+function Services(){
+    const token = JSON.parse(localStorage.getItem("token"))
     const [services, setServices] = useState([])
 
     useEffect(()=>{
         const getServices = ()=>{
-        axios.get("http://localhost:4000/services") 
+        axios.get( is_production ? "https://m-d-a-dashboard.vercel.app/services" : "http://localhost:4000/services", 
+            {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+                }
+        ) 
         .then(data=>{
           data &&  setServices(data.data)
         })
@@ -37,7 +45,7 @@ function Services(){
             })}
         </ul>
      
-     <button className="mt-5 bg-pink-900 font-semibold uppercase rounded-full text-white py-2 px-3">View services</button>
+     {/* <button className="mt-5 bg-pink-900 font-semibold uppercase rounded-full text-white py-2 px-3">View services</button> */}
         </TitleCard>
         
         </>

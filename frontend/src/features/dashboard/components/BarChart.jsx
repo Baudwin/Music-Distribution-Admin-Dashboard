@@ -12,6 +12,8 @@ import { Bar } from 'react-chartjs-2';
 import TitleCard from '../../../components/Cards/TitleCard';
 import axios from 'axios';
 
+const is_production = process.env.NODE_ENV === 'production' 
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function BarChart(){
@@ -23,7 +25,7 @@ function BarChart(){
   
   useEffect(()=>{
     const getEarnings = async()=>{
-      axios.get("http://localhost:4000/earnings") 
+      axios.get(is_production ? "https://m-d-a-dashboard.vercel.app/earnings" : "http://localhost:4000/earnings") 
       .then(data=>{
         data &&  setEarnings(data.data)
         data && setFilteredEarnings(data.data)

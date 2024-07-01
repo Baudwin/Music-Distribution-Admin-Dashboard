@@ -9,6 +9,7 @@ import BarChart from './components/BarChart'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
 
+const is_production = process.env.NODE_ENV === 'production' 
 
 const statsData = [
     {title : "Users", value : "200+", icon : <FiUsers className='w-8 h-8' /> , description : "↗︎ 2300 (22%)"},
@@ -23,7 +24,7 @@ function Dashboard(){
 
     // download report function 
     const downloadReport = ()=>{
-        axios.get("http://localhost:4000/download-pdf", {
+        axios.get( is_production ? "https://m-d-a-dashboard.vercel.app/download-pdf" : "http://localhost:4000/download-pdf", {
             responseType:'blob'
         })
     
@@ -40,7 +41,7 @@ function Dashboard(){
 
        // download report as csv function 
        const downloadCsv = ()=>{
-        axios.get("http://localhost:4000/download-csv", {
+        axios.get( is_production ? "https://m-d-a-dashboard.vercel.app/download-csv" : "http://localhost:4000/download-csv", {
             responseType:'blob'
         })
     

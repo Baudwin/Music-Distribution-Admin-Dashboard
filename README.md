@@ -17,7 +17,7 @@ add `JWT_SECRET = "any secret of your choice"`  in .env file
 run `npm run start `
 
 
-   *start the front end with the following commands*
+    *start the front end with the following commands*
 
 run `cd frontend`
 
@@ -32,3 +32,4 @@ navigate to `http://localhost:3000` on your browser
 
 - Implemented authentication using jwt.
 - Added a dark mode toggle for better user exoerience.
+- Deployed the application 

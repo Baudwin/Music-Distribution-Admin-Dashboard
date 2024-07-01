@@ -5,6 +5,8 @@ import InputText from "../../components/Input/InputText";
 import axios from "axios";
 import checkAuth from "../../app/auth";
 
+const is_production = process.env.NODE_ENV === 'production' 
+
 function Login() {
 
   const navigate = useNavigate()
@@ -32,12 +34,11 @@ function Login() {
     else {
       setLoading(true);
       // Call API to check user credentials and save token in localstorage
-        axios.post("http://localhost:4000/login-admin", loginObj) 
+        axios.post(is_production ? "https://m-d-a-dashboard.vercel.app/login-admin" : "http://localhost:4000/login-admin", loginObj) 
         
         .then(data=>{
            localStorage.setItem("token", JSON.stringify(data.data.adminInfo.token));
-           navigate("/app/welcome")
-           
+           navigate("/app/welcome")    
         })
         .catch(error=>{
            setErrorMessage(error.response.data.msg)

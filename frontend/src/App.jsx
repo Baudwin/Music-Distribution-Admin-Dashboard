@@ -32,10 +32,10 @@ function App() {
 			<Router>
 				<Routes>
 				
-					<Route path="/login" element={  <Login /> } />
+					<Route path="/login" element={ <Login /> } />
 					
 					{/* Place new routes over this */}
-					<Route path="/app/*" element={ token ?  <Layout /> : <Navigate to={'/login'}/>} />
+					<Route path="/app/*" element={ <Layout /> } />
 
 					<Route path="*" element={<Navigate to="/app/welcome" replace />} />
 				</Routes>
