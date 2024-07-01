@@ -1,10 +1,7 @@
 /** Icons are imported separatly to reduce build time */
 import Squares2X2Icon from '@heroicons/react/24/outline/Squares2X2Icon'
-// import WalletIcon from '@heroicons/react/24/outline/WalletIcon'
 import UserIcon from '@heroicons/react/24/outline/UserIcon'
 import Cog6ToothIcon from '@heroicons/react/24/outline/Cog6ToothIcon'
-import ChartBarIcon from '@heroicons/react/24/outline/ChartBarIcon'
-import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon'
 import { FiLogOut } from 'react-icons/fi'
 import { AiFillCustomerService } from 'react-icons/ai'
 import { FaServicestack } from 'react-icons/fa'
@@ -48,11 +45,11 @@ const menu_links = [
   },
 
 
-{
-    path: '/', // url
-    icon: <FiLogOut className={iconClasses}/>, // icon component
-    name: 'Logout', // name that appears in Sidebar
-  },
+// {
+//     path: '/login',
+//     icon: <FiLogOut className={iconClasses}/>,
+//     name: 'Logout',
+//   },
 
 
 ]

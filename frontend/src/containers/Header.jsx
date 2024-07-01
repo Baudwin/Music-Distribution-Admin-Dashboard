@@ -5,10 +5,10 @@ import BellIcon  from '@heroicons/react/24/outline/BellIcon'
 import Bars3Icon  from '@heroicons/react/24/outline/Bars3Icon'
 import MoonIcon from '@heroicons/react/24/outline/MoonIcon'
 import SunIcon from '@heroicons/react/24/outline/SunIcon'
+import { useNavigate } from 'react-router'
 
 function Header(){
-
-    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {noOfNotifications, pageTitle} = useSelector(state => state.header)
     const [currentTheme, setCurrentTheme] = useState(localStorage.getItem("theme"))
 
@@ -27,7 +27,7 @@ function Header(){
 
     function logoutUser(){
         localStorage.clear();
-        window.location.href = '/'
+        navigate('/login')
     }
 
     return(
