@@ -1,32 +1,50 @@
-import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import LandingIntro from "./LandingIntro";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ErrorText from "../../components/Typography/ErrorText";
 import InputText from "../../components/Input/InputText";
+import axios from "axios";
+import checkAuth from "../../app/auth";
 
 function Login() {
-  const INITIAL_LOGIN_OBJ = {
-    password: "",
-    emailId: "",
-  };
+
+  const navigate = useNavigate()
+  const token = checkAuth()
+
+  useEffect(()=>{
+    token && navigate("/app/dashboard" )
+  }, [])
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [loginObj, setLoginObj] = useState(INITIAL_LOGIN_OBJ);
+  const [loginObj, setLoginObj] = useState({
+    password: "",
+    email: "",
+  });
 
   const submitForm = (e) => {
     e.preventDefault();
     setErrorMessage("");
-    if (loginObj.emailId.trim() === "")
-      return setErrorMessage("Email Id is required! (use any value)");
+
+    if (loginObj.email.trim() === "")
+      return setErrorMessage("Email is required!");
     if (loginObj.password.trim() === "")
-      return setErrorMessage("Password is required! (use any value)");
+      return setErrorMessage("Password is required!");
     else {
       setLoading(true);
       // Call API to check user credentials and save token in localstorage
-      localStorage.setItem("token", "DumyTokenHere");
-      setLoading(false);
-      window.location.href = "/app/welcome";
+        axios.post("http://localhost:4000/login-admin", loginObj) 
+        
+        .then(data=>{
+           localStorage.setItem("token", JSON.stringify(data.data.adminInfo.token));
+           navigate("/app/welcome")
+           
+        })
+        .catch(error=>{
+           setErrorMessage(error.response.data.msg)
+           return
+        })
+
+     setLoading(false);
     }
   };
 
@@ -37,24 +55,23 @@ function Login() {
 
   return (
     <div className="min-h-screen bg-base-200 flex items-center">
-      <div className="card mx-auto w-full max-w-5xl  shadow-xl">
-        <div className="grid md:grid-cols-2 grid-cols-1  bg-base-100 rounded-xl">
-          {/* <div className="">
-            <LandingIntro />
-          </div> */}
+      <div className="card  mx-auto w-1/3 max-w-5xl  shadow-xl">
+        <div className="  bg-base-100 rounded-xl">
           <div className="py-24 px-10">
             <h2 className="text-2xl font-semibold mb-2 text-center">Login</h2>
             <form onSubmit={(e) => submitForm(e)}>
               <div className="mb-4">
                 
+
                 <InputText
-                  type="emailId"
-                  defaultValue={loginObj.emailId}
-                  updateType="emailId"
+                  type="email"
+                  defaultValue={loginObj.email}
+                  updateType="email"
                   containerStyle="mt-4"
-                  labelTitle="Email Id"
+                  labelTitle="Email"
                   updateFormValue={updateFormValue}
                 />
+                <p className="text-gray-600">admin@mail.com</p>
 
                 <InputText
                   defaultValue={loginObj.password}
@@ -64,14 +81,7 @@ function Login() {
                   labelTitle="Password"
                   updateFormValue={updateFormValue}
                 />
-              </div>
-
-              <div className="text-right text-primary">
-                <Link to="/forgot-password">
-                  <span className="text-sm  inline-block  hover:text-primary hover:underline hover:cursor-pointer transition duration-200">
-                    Forgot Password?
-                  </span>
-                </Link>
+                <p className="text-gray-600">admin123</p>
               </div>
 
               <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>
@@ -84,25 +94,6 @@ function Login() {
                 Login
               </button>
 
-              {/* <div className="text-center my-4">
-                Don't have an account yet?{" "}
-                <Link to="/register">
-                  <span className="  inline-block  hover:text-primary hover:underline hover:cursor-pointer transition duration-200">
-                    Register
-                  </span>
-                </Link>
-              </div> */}
-              {/* <div className="w-full ">
-                <button class="px-4 py-2 border w-full flex justify-center items-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
-                  <img
-                    class="w-6 h-6"
-                    src="https://www.svgrepo.com/show/475656/google-color.svg"
-                    loading="lazy"
-                    alt="google logo"
-                  />
-                  <span>Login with Google</span>
-                </button>
-              </div> */}
             </form>
           </div>
         </div>

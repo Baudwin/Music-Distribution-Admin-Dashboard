@@ -3,8 +3,6 @@
 // import BusinessCreate from "./BusinessCreate";
 import Card from "./Card";
 import React, { useState, useRef } from "react";
-import ReactDOM from "react-dom";
-import App from "../../../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCross, faTimes } from "@fortawesome/free-solid-svg-icons";
 

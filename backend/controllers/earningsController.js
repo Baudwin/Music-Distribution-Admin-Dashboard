@@ -1,4 +1,3 @@
-require('dotenv').config()
 const earnings = require("../mockDB/dummyEarnings")
 
 module.exports = {

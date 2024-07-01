@@ -1,7 +1,6 @@
 import { NavLink, Link , useLocation} from 'react-router-dom'
 import SidebarSubmenu from './SidebarSubmenu';
 import XMarkIcon  from '@heroicons/react/24/outline/XMarkIcon'
-// import { useDispatch } from 'react-redux';
 import menu_links from '../routes/sidebar_links';
 
 function LeftSidebar(){
@@ -23,7 +22,6 @@ function LeftSidebar(){
                 <li className="mb-4  font-semibold text-xl">
 
                     <Link className='' to={'/app/welcome'}>
-                    {/* <img className="mask mask-squircle w-10" src="/logo192.png" alt="DashWind Logo"/> */}
                     <div className='bg-pink-700 rounded shadow'>
                      <span className='text-white px-3 py-1 font-semibold'>E</span>   
                     </div>

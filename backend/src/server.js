@@ -4,6 +4,7 @@ const app = express()
 const earningsRoute = require("../routes/earnings")
 const servicesRoute = require("../routes/services")
 const reportRoute = require('../routes/downloads')
+const adminRoute = require("../routes/admin")
 
 const cors = require('cors')
 
@@ -22,6 +23,7 @@ app.use(cors({
 app.use(earningsRoute);
 app.use(servicesRoute);
 app.use(reportRoute)
+app.use(adminRoute)
 
 
 app.listen(port, ()=>{

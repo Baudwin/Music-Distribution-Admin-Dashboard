@@ -11,7 +11,6 @@ import {
 import { Bar } from 'react-chartjs-2';
 import TitleCard from '../../../components/Cards/TitleCard';
 import axios from 'axios';
-import Datepicker from "react-tailwindcss-datepicker"; 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -100,8 +99,8 @@ const clearFilter = ()=>{
               </div>
 
               <div className='flex gap-2 pt-4'>
-                <button onClick={filter} className='bg-violet-700 shadow hover:bg-violet-600  font-semibold text-white px-5 py-2 rounded'>Filter</button>
-                <button onClick={clearFilter} className='bg-red-700 hover:bg-red-600  shadow font-semibold text-white px-5 py-2 rounded'>Reset</button>
+                <button onClick={filter} className='bg-pink-800 shadow hover:bg-pink-600  font-semibold text-white px-5 py-2 rounded'>Filter</button>
+                <button onClick={clearFilter} className='bg-gray-700 hover:bg-red-600  shadow font-semibold text-white px-5 py-2 rounded'>Reset</button>
               </div> 
              
             </div>

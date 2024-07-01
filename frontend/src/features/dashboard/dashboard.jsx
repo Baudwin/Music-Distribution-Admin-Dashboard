@@ -1,7 +1,7 @@
 import DashboardStats from './components/DashboardStats'
 
 
-import {FiDownload, FiMail, FiMusic, FiPlayCircle, FiUsers} from 'react-icons/fi'
+import {FiDownload,FiMusic, FiPlayCircle, FiUsers} from 'react-icons/fi'
 
 
 import UserChannels from './components/Services'
@@ -90,14 +90,6 @@ function Dashboard(){
                    <span> Download csv report</span>
                     </button>
             </div>
-
-
-        {/** ---------------------- Different charts ------------------------- */}
-            {/* <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <LineChart />
-                <BarChart />
-            </div> */}
-            
 
         </>
     )
