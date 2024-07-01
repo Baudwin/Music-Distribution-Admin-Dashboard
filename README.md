@@ -1,12 +1,12 @@
 <!-- INSTRUCTIONS FOR SETTING UP AND RUNNING THE PROJECT -->
 
-run git clone <repository_url>
+run `git clone https://github.com/Baudwin/Music-Distribution-Admin-Dashboard.git`
 
 open the cloned project Music_Distribution_Admin_Dashboard
 
      *start the backend server with the following comands* 
 
-cd backend
+run `cd backend`
 
 run `npm install`
 
@@ -19,7 +19,7 @@ run `npm run start `
 
    *start the front end with the following commands*
 
-cd frontend
+run `cd frontend`
 
 run `npm install`
 
